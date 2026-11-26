@@ -54,3 +54,7 @@ Eco.app/Contents/MacOS/Eco --selftest
 | `Sources/Eco/Meeting.swift` | Calendario, detección de inicio y fin de llamadas, ventanita flotante |
 | `Sources/Eco/Chat.swift` | Búsqueda de fragmentos y chat con tus reuniones |
 | `icon.swift` | Dibuja el icono (`Eco.icns`) |
+
+## Licencia
+
+[MIT](LICENSE). Usa [FluidAudio](https://github.com/FluidInference/FluidAudio), con licencia Apache 2.0.
