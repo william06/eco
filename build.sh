@@ -29,9 +29,11 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 </dict></plist>
 PLIST
 # Firma con un certificado fijo para que macOS recuerde los permisos entre compilaciones.
-# Usa el primer "Apple Development" del llavero (o ECO_SIGN); si no hay, firma ad hoc.
+# Usa el primer "Apple Development" del llavero (o ECO_SIGN); si no hay, firma ad hoc. ECO_SIGN=- fuerza ad hoc.
 SIGN="${ECO_SIGN:-Apple Development}"
-if security find-identity -v -p codesigning | grep -q "$SIGN"; then
+if [ "$SIGN" = "-" ]; then
+  codesign --force --sign - "$APP"   # ad hoc: para publicar sin datos del certificado
+elif security find-identity -v -p codesigning | grep -q "$SIGN"; then
   codesign --force --sign "$SIGN" "$APP"
 else
   echo "Aviso: no hay certificado '$SIGN'; firmo ad hoc (macOS pedirá permisos de nuevo tras cada compilación)."
