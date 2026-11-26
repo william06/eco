@@ -1,0 +1,4 @@
+.build/
+Eco.app/
+.swiftpm/
+.DS_Store
